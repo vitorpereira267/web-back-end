@@ -97,9 +97,9 @@ console.log(invertedStr); */
 var vogais = contarVogais("Hello");
 console.log(vogais); */
 
-// Ex4 -------------------------------------------------------------
+// Ex4 --------------------------------------------------------------
 
-function contarLetras(str, letras){
+/*function contarLetras(str, letras){
     str = str.toLowerCase()
     var count = 0;
     for (let index = 0; index < str.length; index++) {
@@ -111,4 +111,44 @@ function contarLetras(str, letras){
 }
 
 var count = contarLetras("HellE", "e");
-console.log(count);
+console.log(count);*/
+
+// Ex5 ---------------------------------------------------------------
+
+/*function calculateWorking(he, me, se, hs, ms, ss){
+
+    if(he < 8 || hs > 18){
+        console.log("Horario nao permitido!!!");
+        return;
+    }
+    var entradaSecundos = he * 3600 + me + 60 + se;
+    var saidaSecundos = hs * 3600 + ms * 60 + ss;
+
+    var tempotrabalhoEmpregado = entradaSecundos - saidaSecundos;
+
+    var remainderHour= tempotrabalhoEmpregado % 3600;
+    var hours = (tempotrabalhoEmpregado - remainderHour) / 3600;
+    var remainderMinutos = remainderHour % 60;
+    var minutos = (remainderHour - remainderMinutos) / 60;
+
+    console.log("Tempo de trabalho:" + hours + ":" + minutos + ":" + remainderMinutos);
+
+    
+}
+
+calculateWorking(8,35,0,16,0,30);*/
+
+// Ex6 ---------------------------------------------------------------------
+
+
+function drawRectangle(width, height){
+    var line = "";
+    for (let j = 0; i < height; j++) {
+        for (let i = 0; i < width; i++) {
+        line+-"*";
+        }
+    console.log(line);
+    }
+}
+
+drawRectangle(5,3);
