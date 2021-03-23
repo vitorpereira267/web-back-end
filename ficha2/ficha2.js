@@ -239,6 +239,8 @@ function displayGrades(array){
 
 displayGrades(studentsList);
 
+//melhor nota
+
 function getBestGrade(array) {
     var max = array[0];
     for (let i = 1; i < array.length; i++) {
@@ -248,6 +250,32 @@ function getBestGrade(array) {
     }
     return max;
 }
+
+function getAverage(array){
+    var average = 0;
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i].grade;
+        average += array[i].grade;
+    }
+    average = average / array.length;
+    return average;
+}
+
+function getClosestFrom(array){
+    var average = getAverage(array);
+    var min = array[0];
+    var index = 0;
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        var diff = average - Math.abs(average - array[i].grade);
+        if(diff < min){
+            min = diff;
+            index = i;
+        }
+    }
+    return array[index];
+}
+
 
 var BestGrade = getBestGrade(studentsList);
 console.log();
