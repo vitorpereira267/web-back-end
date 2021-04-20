@@ -1,0 +1,15 @@
+diferenças: route paramiteres diferenças
+
+query nao altera o path, usando o ? são transformados em num objeto
+
+se colocasse /bola.pt/random.text, poe nome e a extensão
+
+expressao regular, escrevem e faz match a um conjunto de regras.
+writeHead escrever o cabeçalho manualmente
+
+
+vantagem do package.json guardar as dependencias, 
+
+npm init cria o package.json
+
+utf-8 incoding codificação do ficheiro de texto
