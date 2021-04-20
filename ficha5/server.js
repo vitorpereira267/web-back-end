@@ -107,7 +107,10 @@ app.put('/users/:id', (req, res) => {
     var edit = req.body;
     person["person" + id] = req.body;
     person["person" + id].id = id;
-
+    writeFileSync('./persons.json', JSON.stringify(persons));
+    res.send(persons);
+    
+    
   }
   else {
     res.send("Id inexistente");
