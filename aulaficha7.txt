@@ -1,0 +1,9 @@
+--save a dependencia é adicionada ao ficheiro
+
+conection é so uma ligação a base de dados
+
+pool várias ligações
+
+pedido é feito do cliente, vai fazer um pedido ao servidor
+
+resposta do servidor ao cliente
