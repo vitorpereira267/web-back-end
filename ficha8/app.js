@@ -2,12 +2,60 @@
 const { response } = require('express');
 const express = require('express')
 const mysql = require('mysql')
-
 // Instanciar o express
 const app = express()
 // Definir a porta do servidor http
 const port = 3000
 
+//------------------------------------------------------------
+// SWAGGER
+
+// Importar o swagger
+const swaggerJsDoc = require('swagger-js');
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerOptions ={
+        swaggerDefinition:  {
+            info: {
+                version: "1.0.0",
+                title: "Ficha 7 API",
+                description: "Dicha 7 API Information",
+                contact: {
+                    name: "TPSI-DWB"
+                },
+                servers: ["http://localhost:3000"],
+            },
+            definitions:{
+                "Person": {
+                    "type": "object",
+                    "properties" :  {
+                        "id": {
+                            "type" : "integer",
+                            "x-primary-key": true
+                        },
+                        "firstname": {
+                            "type": "string"
+                        },
+                        "lastname": {
+                            "type": "string"
+                        },
+                        "profession": {
+                            "type": "string"
+                        },
+                        "age": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                    }
+                }
+            },
+        },
+        apis: ["app.js"] 
+}
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+//------------------------------------------------------------
 //Funcoes middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
