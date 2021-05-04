@@ -55,7 +55,57 @@ const swaggerOptions ={
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+/**
+ *  @swagger
+ * /person:
+ *    get:
+ *      tags:
+ *          - Person
+ *      summary: Gets a list of persons
+ *      description: Returns a list of persons
+ *      produces:
+ *          - application/json
+ *      responses:
+ *          200:
+ *              description: An array of persons
+ *              schema:
+ *                $ref: '#/definitions/Person'
+ */
+
+app.get('/persons', (request, response) => {
+
+});
+
+/**
+ * @swagger
+ *  /person:
+ *     post:
+ *       tags:
+ *          - Person
+ *       summary: Creates and stores a person
+ *       description: Returns the id of the created person
+ *       produces:
+ *            -aplication/json
+ *       parameters:
+ *            - name: Model
+ *              description: Sample person
+ *              in: body
+ *              required: true
+ *              schema:
+ *                  $ref: '#/definitions/Person'
+ *        responses:
+ *            200:
+ *                description: Seccessfully created
+ */
+
+app.post('/persons', (request, response) => {
+
+})
 //------------------------------------------------------------
+
+
+
 //Funcoes middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
