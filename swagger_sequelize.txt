@@ -1,0 +1,17 @@
+// comentario single line
+/* */ comentario multi line
+
+comentar != documentar
+
+swagger, linguagem para descrever apis em rest usando json
+
+/** documentar em JSDOC de seguida pressionamos enter
+*
+*
+*/
+
+tags todos os comentarios que forem colocados vao tar documentos dentro de uma especifica tag 
+
+* tags: 
+	-Person
+	
