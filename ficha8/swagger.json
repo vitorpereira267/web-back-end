@@ -1,0 +1,104 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Ficha 7 API",
+        "description": "Ficha 7 API Information",
+        "contact": {
+            "name": [
+                "http://localhost:3000"
+            ]
+        },
+        "paths":{
+            "/person": {
+                "post": {
+                    "tags": [
+                        "person"
+                    ],
+                    "summary": "Create person",
+                    "description": "This can only be done by the logged in user.",
+                    "operationId": "createPerson",
+                    "produces": [
+                        "application/xml",
+                        "application/json"
+                    ],
+                    "parameters": [
+                        {
+                            "in": "body",
+                            "name": "body",
+                            "description": "Created person object",
+                            "required": true,
+                            "schema": {
+                                    "$ref": "#/definitions/Person"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "default": {
+                            "description": "successful operation"
+                        }
+                    }
+                },
+                "get": {
+                    "tags": [
+                        "person"
+                    ],
+                    "summary": "Gets person",
+                    "description": "Get all persons.",
+                    "operationId": "getPersons",
+                    "produces": [
+                        "application/xml",
+                        "application/json"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "successful operation",
+                            "schema": {
+                                "$ref": "#/definitions/Person"
+                        },
+                        "400": {
+                            "description": "Bad request"
+                        },
+                        "404": {
+                            "description": "No persons found"
+                        }
+                    }
+                },
+                "/person/{id}":{
+                    "delete":{
+                        "tags": [
+                            "person"
+                        ],
+                    }
+                }
+            }
+        },
+
+
+        "definitions": {
+            "Person": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "x-primary-key": true
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "profession": {
+                        "type": "string"
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            }
+        }
+    }
+}
+}
