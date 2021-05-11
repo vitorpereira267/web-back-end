@@ -1,0 +1,2 @@
+via query: /product/?id=1 var id = req.query.id
+via params: /product/1 var id = req.params.id

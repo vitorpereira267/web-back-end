@@ -15,3 +15,14 @@ tags todos os comentarios que forem colocados vao tar documentos dentro de uma e
 * tags: 
 	-Person
 	
+
+
+
+
+
+
+
+
+
+
+sequilize: force: true //apaga tudo e cria de novo
