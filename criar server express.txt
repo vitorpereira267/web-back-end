@@ -1,0 +1,7 @@
+criar server express
+1 criar pasta
+2 criar app.js
+3 npm init = config do projeto atraves do ficheiro package.json
+4 instalar dependencias, express, swagger, etc
+5 fazer requires das dependencias instaladas
+6 criar servidor http
