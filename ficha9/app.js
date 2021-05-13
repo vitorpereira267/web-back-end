@@ -73,21 +73,89 @@ Person.bulkCreate([
 }).then(function (person) {
     console.log(person)
 });
-
 */
 
+
+//listar pessoas
+/*
 app.get('/person', (req ,res) => {
     Person.findAll().then(person => {
         res.send(person);
     })
-});
+});*/
 
+//adicionar pessoas
 app.post('/person', (req, res) => {
     Person.create({firstName:"Joao", lastName:"Alberto", profession:"IT", age:62}).then(person => {
         res.send(person)
     })
-    
 });
+
+//apagar uma pessoa no body
+app.delete('/person', (req, res) => {
+    Person.destroy({
+        where:{
+            id: req.body.id
+        }
+    }).catch(err => {
+        res.status(404).send({err: 'No user'})
+    })
+    res.status(204).send();
+});
+
+
+//apgar pessoas por parametros
+app.delete('/person/:id', (req, res) => {
+    Person.destroy({
+        where:{
+            id: req.params.id
+        }
+    }).catch(err => {
+        res.status(404).send({err: 'No user'})
+    })
+    res.status(204).send();
+});
+
+//Query
+app.get('/person', (req, res) => {
+
+    if (req.query.id) {
+        Person.findByPk(req.query.id).then(person => {
+            res.send(person);
+        }).catch(err => {
+            res.status(404).send({ err: 'No user' });
+        });
+    }
+    else {
+        Person.findAll().then(person => {
+            res.send(person);
+        });
+    }
+});
+
+app.get('/person/:age/:profession', (req ,res) => {
+    Person.findAll({
+        where:{
+            age: req.params.age,
+            profession: req.params.profession
+        }
+        }).then(person => {
+            res.send(person)
+        }).catch(err => {
+            res.send("No user", err)
+        })
+        res.status(204).send()
+});
+    
+
+
+app.put('/persons/:id', (req, res) => {
+    Person.update({
+        
+
+        
+    })
+})
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
