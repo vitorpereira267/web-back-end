@@ -111,7 +111,7 @@ app.get('/product', (req, res) => {
     }
     else {
         Product.findAll().then(product => {
-            res.send(product);
+            res.send(sort(product.views));
         });
     }
 });
@@ -204,8 +204,11 @@ app.put('/product/comments', (req, res) => {
 
 // e)
 
-
-
+app.get('/product', (req, res) => {
+    Product.findAll().then(product => {
+        res.send(sort(product.views));
+    });
+});
 
 
 
