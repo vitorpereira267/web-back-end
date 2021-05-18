@@ -116,7 +116,6 @@ app.get('/product', (req, res) => {
             res.send(product.sort(function(productX,productY){
                 return productX.dataValues.views - productY.dataValues.views      // https://www.javascripttutorial.net/javascript-array-sort/                     
             }))
-            console.log(product)
         });
     }
 });
