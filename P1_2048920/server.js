@@ -132,7 +132,7 @@ app.delete('/product/:id', (req, res) => {
 });
 
 
-// c) Quase feito
+// c) feito
 
 app.put('/product/:id/images', (req, res) => {
 
@@ -167,7 +167,7 @@ app.put('/product/:id/images', (req, res) => {
 })
 
 
-// d)
+// d) feito
 
 
 app.put('/product/comments', (req, res) => {
