@@ -87,9 +87,9 @@ sequelize.sync({ force: false })
 
 
 /*Product.bulkCreate([
-    {seller_id: 1,title:'Computador',description:'Computador Gaming',price:1000,url:"www.worten.pt",views:178,images:"pc gaming",comments:"Muito Bom",tags:"pc"},
-    {seller_id: 2,title:'Rato',description:'Rato Wirelss',price:50,url:"www.worten.pt",views:121,images:"rato wireless",comments:"Bom",tags:"rato"},
-    {seller_id: 3,title:'Teclado',description:'Teclado Mecanico',price:104,url:"www.worten.pt",views:134,images:"teclado mecanico",comments:"Excelente",tags:"teclado"},
+    {seller_id: 1,title:'Computador',description:'Computador Gaming',price:1000,url:"www.worten.pt",views:178,images:"E:\\Universidade\\2 Semestre\\Back end\\web-back-end.png",comments:"Muito Bom",tags:"pc"},
+    {seller_id: 2,title:'Rato',description:'Rato Wirelss',price:50,url:"www.worten.pt",views:121,images:"E:\\Universidade\\2 Semestre\\Front end\\frontend.png",comments:"Bom",tags:"rato"},
+    {seller_id: 3,title:'Teclado',description:'Teclado Mecanico',price:104,url:"www.worten.pt",views:134,images:"E:\\Universidade\\1 Semestre\\POO \\poo.png",comments:"Excelente",tags:"teclado"},
 ]).then(function(){
     return Product.findAll()
 }).then(function(product){
@@ -102,6 +102,8 @@ sequelize.sync({ force: false })
 
 app.get('/product', (req, res) => {
 
+    //viewsArray = []
+
     if (req.query.id) {
         Product.findByPk(req.query.id).then(product => {
             res.send(product);
@@ -111,7 +113,10 @@ app.get('/product', (req, res) => {
     }
     else {
         Product.findAll().then(product => {
-            res.send(sort(product.views));
+            res.send(product.sort(function(productX,productY){
+                return productX.dataValues.views - productY.dataValues.views      // https://www.javascripttutorial.net/javascript-array-sort/                     
+            }))
+            console.log(product)
         });
     }
 });
@@ -204,11 +209,6 @@ app.put('/product/comments', (req, res) => {
 
 // e)
 
-app.get('/product', (req, res) => {
-    Product.findAll().then(product => {
-        res.send(sort(product.views));
-    });
-});
 
 
 
