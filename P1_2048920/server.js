@@ -136,7 +136,7 @@ app.delete('/product/:id', (req, res) => {
 
 app.put('/product/:id/images', (req, res) => {
 
-    Product.update({ images: "C:\\Users\\Turma A\\Downloads\\oi.png" }, {
+    Product.update({images:req.body.images}, {
         where: {
             id: req.params.id
         }
@@ -146,7 +146,7 @@ app.put('/product/:id/images', (req, res) => {
                 id: req.params.id
             }
         }).then(product => {
-            res.json(product)
+            res.send(product)
         }).catch(err => {
             res.status(404).send({ err: 'No product found' })
         })
@@ -171,12 +171,21 @@ app.put('/product/:id/images', (req, res) => {
 
 
 app.put('/product/comments', (req, res) => {
-    Product.update({ comments: "Produto Excelente" }, {
+    Product.update({comments:req.body.comments}, {
         where: {
             id: req.query.id
         }
-    }).then(product => {
-        res.send({ "Comment done:": product })
+    }).then((affectedRows) => {
+        Product.findOne({
+            where: {
+                id: req.query.id
+            }
+        }).then(product => {
+            res.json(product)
+        }).catch(err => {
+            res.status(404).send({ err: 'No product found' })
+        })
+
     }).catch(err => {
         res.status(404).send({ err: 'No product found' })
     })
