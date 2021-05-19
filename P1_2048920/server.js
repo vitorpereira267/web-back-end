@@ -112,10 +112,13 @@ app.get('/product', (req, res) => {
         });
     }
     else {
+        // e) feito
         Product.findAll().then(product => {
             res.send(product.sort(function(productX,productY){
                 return productX.dataValues.views - productY.dataValues.views      // https://www.javascripttutorial.net/javascript-array-sort/                     
             }))
+        }).catch(err => {
+            res.status(404).send({ err: 'No product found' });
         });
     }
 });
@@ -131,7 +134,9 @@ app.delete('/product/:id', (req, res) => {
         }
     }).then(product => {
         res.send({ "Product deleted": product });
-    })
+    }).catch(err => {
+        res.status(404).send({ err: 'No product found' });
+    });
 
 });
 
@@ -173,7 +178,6 @@ app.put('/product/:id/images', (req, res) => {
 
 // d) feito
 
-
 app.put('/product/comments', (req, res) => {
     Product.update({comments:req.body.comments}, {
         where: {
@@ -206,7 +210,7 @@ app.put('/product/comments', (req, res) => {
 
 })
 
-// e)
+
 
 
 
