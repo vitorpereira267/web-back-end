@@ -1,0 +1,103 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "description": "Projeto Back End",
+        "contact": {
+            "name": "TPSI-DWB"
+        },
+        "servers": [
+            "http://localhost:3000"
+        ]
+    },
+    "paths": {
+        "definitons": {
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "primaryKey": true,
+                        "type": "integer",
+                        "autoIncrement": true,
+                        "allowNull": false
+                    },
+                    "seller_id": {
+                        "type": "integer",
+                        "allowNull": false
+                    },
+                    "title": {
+                        "type": "string",
+                        "allowNull": false
+                    },
+                    "description": {
+                        "type": "string",
+                        "allowNull": false
+                    },
+                    "price": {
+                        "type": "decimal",
+                        "allowNull": false
+                    },
+                    "url": {
+                        "type": "string",
+                        "allowNull": false
+                    },
+                    "views": {
+                        "type": "integer",
+                        "allowNull": false
+                    },
+                    "images": {
+                        "type": "json",
+                        "allowNull": false
+                    },
+                    "comments": {
+                        "type": "json",
+                        "allowNull": false
+                    },
+                    "tags": {
+                        "type": "json",
+                        "allowNull": false
+                    },
+                    "paths": {
+                        "/product": {
+                            "get": {
+                                "tags": [
+                                    "product"
+                                ],
+                                "sumamary": "Gets all product",
+                                "description": "Gets all products.",
+                                "operationId": "getAllProducts",
+                                "produces": [
+                                    "application/xml",
+                                    "application/json"
+                                ],
+                                "parameters": [
+                                    {
+                                        "name": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "type": "string"
+                                    }
+                                ],
+                                "responses": {
+                                    "200": {
+                                        "description": "successful operation",
+                                        "schema": {
+                                            "$ref": "#/definitions/Product"
+                                        }
+                                    },
+                                    "400": {
+                                        "description": ""
+                                    },
+                                    "404": {
+                                        "description": "No products found"
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
