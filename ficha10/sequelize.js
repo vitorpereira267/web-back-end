@@ -1,8 +1,10 @@
+// Implement all the models and business logic using sequelize
+
 const Sequelize = require('sequelize');
-const PersonModel = require('./models/Person')
+const UsersModel = require('./models/Users')
 
 
-const sequelize = new Sequelize('ficha9', 'root', '', {
+const sequelize = new Sequelize('ficha10', 'root', '', {
     dialect: 'mysql',
     pool: {
         max: 10,
@@ -12,7 +14,7 @@ const sequelize = new Sequelize('ficha9', 'root', '', {
     }
 });
 
-const Person = PersonModel(sequelize, Sequelize);
+const Users = UsersModel(sequelize, Sequelize);
 
 
 sequelize.authenticate()
@@ -23,8 +25,12 @@ sequelize.authenticate()
         console.error("Unable to connect", err);
 });
 
+sequelize.sync({ force: false})
+    .then(() =>{
+        console.log("Tables created")
+    })
 
 module.exports = {
-    Person,
+    Users,
     
 }
