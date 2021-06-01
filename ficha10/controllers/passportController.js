@@ -77,6 +77,24 @@ module.exports = function (passport) {
         passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-        function (req, email, password, done) { // callback with email and password from our form                        
-        }));
+        function (req, email, password, done) { // callback with email and password from our form   
+            
+                // find a user whose email is the same as the forms email
+                // we are checking to see if the user trying to login already exists
+                Users.findOne({
+                    where: {
+                        email: email // esquerda o que ta na base dados o da direta o que esta na função
+                    }
+                }).then(user => {
+                    if(user.password == password){
+                            return done(null, user);
+                    }
+                    else{
+                        return done(null, false, req.flash('loginMessage', "Login was not sucessfull"))
+                    }
+                }).catch(err => {
+                    return done(err)
+                })          
+            }));                     
+        
 };
