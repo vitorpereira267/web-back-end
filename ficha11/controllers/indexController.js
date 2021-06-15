@@ -29,6 +29,8 @@ exports.signup = function (req, res) {
 }
 
 exports.login = function (req, res) {
+    var { email } = req.body
+    var { password } = req.body
     User.findOne({
         where: { email: email }
     }).then(user => {
