@@ -3,6 +3,8 @@ var router = express.Router();
 var personController = require('../controllers/personController')
 
 /* GET users listing. */
-router.get('/', personController.getPersons);
+router.get('/', function(res, req){
+    res.send('teste')
+});
 
 module.exports = router;
