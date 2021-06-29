@@ -4,7 +4,7 @@ var personController = require('../controllers/personController')
 
 /* GET users listing. */
 router.get('/', function(res, req){
-    res.send('teste')
+    res.json(personController.getPersons)
 });
 
 module.exports = router;
